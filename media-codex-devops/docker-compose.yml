@@ -1,0 +1,50 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.26
+    ports:
+      - "3307:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+      MYSQL_DATABASE: MediaCodex
+  ms-users:
+    build: ./media-codex-ms-users/develop/.
+    ports:
+      - "27001:27001"
+    volumes:
+      - ../media-codex-ms-users:/home/node
+    working_dir: /home/node
+    command: bash -c "npm --no-bin-links install  && npm run start"
+  ms-media:
+    build: ./media-codex-ms-media/develop/.
+    ports:
+      - "27002:27002"
+    volumes:
+      - ../media-codex-ms-media:/home/node
+    working_dir: /home/node
+    command: bash -c "npm --no-bin-links install && npm run start"
+  ms-general:
+    build: ./media-codex-ms-general/develop/.
+    ports:
+      - "27003:27003"
+    volumes:
+      - ../media-codex-ms-general:/home/node
+    working_dir: /home/node
+    command: bash -c "npm --no-bin-links install && npm run start"
+  api-gateway:
+    build: ./media-codex-api-gateway/develop/.
+    ports:
+      - "27100:27100"
+    volumes:
+      - ../media-codex-api-gateway:/home/
+    working_dir: /home/node
+    command: bash -c "npm --no-bin-links install && npm run start"
+  webapp:
+    build: ./media-codex-webapp/develop/.
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../media-codex-webapp:/home/node
+    working_dir: /home/node
+    command: bash -c "npm --no-bin-links install && npm run start"

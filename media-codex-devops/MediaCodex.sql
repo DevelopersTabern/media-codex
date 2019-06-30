@@ -1,0 +1,62 @@
+CREATE TABLE User(
+	id INT AUTO_INCREMENT,
+	userName VARCHAR(15) NOT NULL,
+	password VARCHAR(15) NOT NULL,
+	firstName VARCHAR(15) NOT NULL,
+	lastName VARCHAR(15) NOT NULL,
+	email VARCHAR(15) NOT NULL,
+	address VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Companies(
+	id INT AUTO_INCREMENT,
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE MovieGenre(
+	id INT AUTO_INCREMENT,
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Languages(
+	id VARCHAR(10),
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Countries(
+	id VARCHAR(10),
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id)); 
+
+CREATE TABLE Roles(
+	id INT AUTO_INCREMENT,
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Casting(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	firstName VARCHAR(15) NOT NULL,
+	lastName VARCHAR(15) NOT NULL,
+	idRoles INT,
+FOREIGN KEY(idRoles) REFERENCES Roles(id));
+
+CREATE TABLE MediaType(
+	id INT AUTO_INCREMENT,
+	name VARCHAR(15) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Media(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(15) NOT NULL,
+	idGenre INT,
+	idCompany INT,
+	idLanguage VARCHAR(10),
+	idCountry VARCHAR(10),
+	idCasting INT,
+	idMediaType INT,
+	FOREIGN KEY(idGenre) REFERENCES MovieGenre(id),
+	FOREIGN KEY(idCompany) REFERENCES Companies(id),
+	FOREIGN KEY(idLanguage) REFERENCES Languages(id),
+	FOREIGN KEY(idCountry) REFERENCES Countries(id),
+	FOREIGN KEY(idCasting) REFERENCES Casting(id),
+	FOREIGN KEY(idMediaType) REFERENCES MediaType(id));

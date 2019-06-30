@@ -1,0 +1,21 @@
+{
+  "name": "media-codex-ms-users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -L src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@mysql/xdevapi": "^1.0.6",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-myconnection": "^1.0.4",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "body-parser": "^1.19.0"
+  }
+}
