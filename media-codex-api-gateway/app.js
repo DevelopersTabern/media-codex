@@ -10,6 +10,29 @@ const mediaServiceProxy = httpProxy('http://192.168.99.100:27002');
 
 const generalServiceProxy = httpProxy('http://192.168.99.100:27003');
 
+//MS-USER
+app.get('/user', (req,res,next) => {
+    userServiceProxy(req,res,next);
+})
+
+app.get('/user/:id', (req,res,next) => {
+    userServiceProxy(req,res,next);
+})
+
+app.post('/user', (req,res,next) => {
+    userServiceProxy(req,res,next);
+})
+
+app.put('/user/:id', (req,res,next) => {
+    userServiceProxy(req,res,next);
+})
+
+app.delete('/user/:id', (req,res,next) => {
+    userServiceProxy(req,res,next);
+})
+
+
+
 //MS-CASTING
 app.get('/casting', (req,res,next) => {
     generalServiceProxy(req,res,next);
