@@ -32,6 +32,27 @@ app.delete('/user/:id', (req,res,next) => {
 })
 
 
+//MS-USER
+app.get('/media', (req,res,next) => {
+    mediaServiceProxy(req,res,next);
+})
+
+app.get('/media/:id', (req,res,next) => {
+    mediaServiceProxy(req,res,next);
+})
+
+app.post('/media', (req,res,next) => {
+    mediaServiceProxy(req,res,next);
+})
+
+app.put('/media/:id', (req,res,next) => {
+    mediaServiceProxy(req,res,next);
+})
+
+app.delete('/media/:id', (req,res,next) => {
+    mediaServiceProxy(req,res,next);
+})
+
 
 //MS-CASTING
 app.get('/casting', (req,res,next) => {
