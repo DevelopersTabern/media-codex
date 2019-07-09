@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const mysqlConnection = require('../database');
+const mysqlConnection = require('../dao/connection');
 
-router.get('/',(req,res) => {
+router.get('/user',(req,res) => {
     mysqlConnection.query('SELECT * FROM User', (err, rows, fields) =>{
         if(!err){
             res.json(rows);
@@ -13,7 +13,7 @@ router.get('/',(req,res) => {
     });
 });
 
-router.get('/:idUser', (req,res)=>{
+router.get('/user/:idUser', (req,res)=>{
     const { idUser } = req.params;
     mysqlConnection.query('SELECT * FROM User WHERE idUser = ?', [idUser], (err,
     rows, fields) => {
@@ -25,7 +25,7 @@ router.get('/:idUser', (req,res)=>{
     });
 });
 
-router.post('/', (req, res) =>{
+router.post('/user', (req, res) =>{
     const { idUser, userName, password, firstName, lastName, email, address } = req.body;
     const query =`
         CALL userAddOrEdit(?,?,?,?,?,?,?);
@@ -39,7 +39,7 @@ router.post('/', (req, res) =>{
     });
 });
 
-router.put('/:id',(req, res) => {
+router.put('/user/:id',(req, res) => {
     const { userName, password, firstName, lastName, email, address } = req.body;
     const { idUser } = req.params;
     const query = 'CALL userAddOrEdit(?,?,?,?,?,?,?)';
@@ -52,7 +52,7 @@ router.put('/:id',(req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) =>{
+router.delete('/user/:id', (req, res) =>{
     const { idUser } = req.params;
     mysqlConnection.query('DELETE FROM User WHERE idUser = ?', [idUser], (err, rows, fields) => {
         if (!err) {
