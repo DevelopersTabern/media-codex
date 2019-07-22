@@ -24,6 +24,8 @@ app.use(require('./routes/companies'));
 
 app.use(require('./routes/countries'));
 
+app.use(require('./routes/mediaType'));
+
 
 app.post('/auth', (req, res) => {
   const authBody = req.body;
