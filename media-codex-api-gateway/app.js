@@ -16,6 +16,9 @@ app.use(require('./routes/user'));
 
 app.use(require('./routes/media'));
 
+app.use(require('./routes/general'));
+
+
 
 const generalServiceProxy = httpProxy('ms-general:27003');
 
@@ -51,157 +54,6 @@ app.post('/waifus', (req, res) => {
   })
 })
 
-// MS-CASTING
-app.get('/casting', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/casting/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/casting', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/casting/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/casting/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-
-// MS-COMPANIES
-app.get('/companies', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/companies/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/companies', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/companies/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/companies/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-
-// MS-COUNTRIES
-app.get('/countries', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/countries/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/countries', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/countries/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/countries/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-
-
-// MS-LANGUAGES
-app.get('/languages', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/languages/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/languages', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/languages/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/languages/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-
-// MS-MEDIATYPE
-app.get('/mediaType', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/mediaType/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/mediaType', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/mediaType/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/mediaType/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-// MS-MOVIEGENRE
-app.get('/movieGenre', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/movieGenre/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/movieGenre', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/movieGenre/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/movieGenre/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-// MS-ROLES
-app.get('/roles', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.get('/roles/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.post('/roles', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.put('/roles/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
-
-app.delete('/roles/:id', (req, res, next) => {
-  generalServiceProxy(req, res, next);
-})
 
 var server = http.createServer(app);
 server.listen(27100);
