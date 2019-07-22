@@ -11,9 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(require('./routes/user'));
 
-
-const userServiceProxy = httpProxy('ms-users:27001');
 
 const mediaServiceProxy = httpProxy('ms-media:27002');
 
@@ -50,30 +49,6 @@ app.post('/waifus', (req, res) => {
     return res.send('waifus');
   })
 })
-
-
-
-// MS-USER
-app.get('/user', (req, res, next) => {
-  userServiceProxy(req, res, next);
-})
-
-app.get('/user/:id', (req, res, next) => {
-  userServiceProxy(req, res, next);
-})
-
-app.post('/user', (req, res, next) => {
-  userServiceProxy(req, res, next);
-})
-
-app.put('/user/:id', (req, res, next) => {
-  userServiceProxy(req, res, next);
-})
-
-app.delete('/user/:id', (req, res, next) => {
-  userServiceProxy(req, res, next);
-})
-
 
 // MS-USER
 app.get('/media', (req, res, next) => {
