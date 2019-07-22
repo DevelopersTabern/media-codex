@@ -26,6 +26,8 @@ app.use(require('./routes/countries'));
 
 app.use(require('./routes/mediaType'));
 
+app.use(require('./routes/movieGenre'));
+
 
 app.post('/auth', (req, res) => {
   const authBody = req.body;
