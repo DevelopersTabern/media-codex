@@ -25,10 +25,6 @@ app.use(require('./routes/companies'));
 app.use(require('./routes/countries'));
 
 
-const generalServiceProxy = httpProxy('ms-general:27003');
-
-
-
 app.post('/auth', (req, res) => {
   const authBody = req.body;
 
