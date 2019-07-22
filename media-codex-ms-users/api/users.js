@@ -1,66 +1,88 @@
 const express = require('express');
 const router = express.Router();
+const connection = require('../dao/connection');
 
-const mysqlConnection = require('../dao/connection');
-
-router.get('/user',(req,res) => {
-    mysqlConnection.query('SELECT * FROM User', (err, rows, fields) =>{
-        if(!err){
-            res.json(rows);
-        } else {
-            console.log(err);
+/* GET ALL USER */
+router.get('/user', (req, res) => { 
+    const query = 'SELECT * FROM User';
+    connection.query(query, (err, rows) => {
+        if(err) {
+            res.send({msg: 'Ha ocurrido un error', err});
         }
-    });
-});
-
-router.get('/user/:idUser', (req,res)=>{
-    const { idUser } = req.params;
-    mysqlConnection.query('SELECT * FROM User WHERE idUser = ?', [idUser], (err,
-    rows, fields) => {
-        if(!err){
-            res.json(rows[0]);
-        } else {
-            console.log(err);
+        else {
+            res.send(rows);
         }
-    });
+    })
 });
 
-router.post('/user', (req, res) =>{
-    const { idUser, userName, password, firstName, lastName, email, address } = req.body;
-    const query =`
-        CALL userAddOrEdit(?,?,?,?,?,?,?);
-    `;
-    mysqlConnection.query(query, [idUser, userName, password, firstName, lastName, email, address], (err, rows, fields) => {
-        if(!err) {
-            res.json({Status: 'User Saved'});
-        } else {
-            console.log(err);
-        }   
-    });
-});
+/* GET USER BY ID */
+router.get('/user/:id', (req, res) => {
+    const query = 'SELECT * FROM User WHERE id = ?';
+    const id = req.params.id;
 
-router.put('/user/:id',(req, res) => {
-    const { userName, password, firstName, lastName, email, address } = req.body;
-    const { idUser } = req.params;
-    const query = 'CALL userAddOrEdit(?,?,?,?,?,?,?)';
-    mysqlConnection.query(query, [idUser, userName, password, firstName, lastName, email, address], (err, rows, fields) => {
-        if(!err) {
-            res.json({Status: 'User Updated'});
-        } else {
-            console.log(err);
-        }   
-    });
-});
-
-router.delete('/user/:id', (req, res) =>{
-    const { idUser } = req.params;
-    mysqlConnection.query('DELETE FROM User WHERE idUser = ?', [idUser], (err, rows, fields) => {
-        if (!err) {
-            res.json({status: 'User Deleted'});
-        } else {
-            console.log(err);
+    connection.query(query, [id], (err, rows) => {
+        if(err) {
+            res.send({msg: 'Ha ocurrido un error', err});
         }
-    });
+        else {
+            res.send(rows);
+        }
+    })
+});
+
+/* SAVE USER */
+router.post('/user', (req, res) => {
+    const query = 'INSERT INTO User(userName, password, firstName, lastName, email, address) VALUES(?,?,?,?,?,?)';
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const address = req.body.address;
+    connection.query(query, [userName, password, firstName, lastName, email, address], (err, rows) => {
+        if(err) {
+            res.send({msg: 'Ha ocurrido un error', err});
+        }
+        else {
+            res.send('Usuario creado');
+        }
+    })
+});
+
+/* UPDATE USER */
+router.put('/user/:id', (req, res) => {
+    const query = 'UPDATE User SET userName = ?, password = ?, firstName = ?, lastName = ?, email = ?, address = ? WHERE id = ?';
+    const id = req.params.id;
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const address = req.body.address;
+
+    connection.query(query, [userName, password, firstName, lastName, email, address, id], (err, rows) => {
+        if(err) {
+            res.send({msg: 'Ha ocurrido un error', err});
+        }
+        else {
+            res.send('Usuario editado');
+        }
+    })
+});
+
+/* DELETE USER */
+router.delete('/user/:id', (req, res) => {
+    const query = 'DELETE FROM User WHERE id = ?';
+    const id = req.params.id;
+
+    connection.query(query, [id], (err, rows) => {
+        if(err) {
+            res.send({msg: 'Ha ocurrido un error', err});
+        }
+        else {
+            res.send('Usuario eliminado');
+        }
+    })
 });
 
 module.exports = router;
