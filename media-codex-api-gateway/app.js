@@ -16,7 +16,7 @@ app.use(require('./routes/user'));
 
 app.use(require('./routes/media'));
 
-app.use(require('./routes/general'));
+app.use(require('./routes/roles'));
 
 app.use(require('./routes/casting'));
 
