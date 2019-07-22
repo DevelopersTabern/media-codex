@@ -18,6 +18,11 @@ app.use(require('./routes/media'));
 
 app.use(require('./routes/general'));
 
+app.use(require('./routes/casting'));
+
+app.use(require('./routes/companies'));
+
+app.use(require('./routes/countries'));
 
 
 const generalServiceProxy = httpProxy('ms-general:27003');
