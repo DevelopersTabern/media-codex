@@ -33,16 +33,10 @@ router.get('/media/:id', (req, res) => {
 
 /* SAVE MEDIA */
 router.post('/media', (req, res) => {
-    const query = 'INSERT INTO Media(name, idGenre, idCompany, idLanguage, idCountry, idCasting, idMediaType) VALUES(?,?,?,?,?,?,?)';
+    const query = 'INSERT INTO Media(name) VALUES(?)';
     const name = req.body.name;
-    const idGenre = req.body.idGenre;
-    const idCompany = req.body.idCompany;
-    const idLanguage = req.body.idLanguage;
-    const idCountry = req.body.idCountry;
-    const idCasting = req.body.idCasting;
-    const idMediaType = req.body.idMediaType;
 
-    connection.query(query, [name, idGenre, idCompany, idLanguage, idCountry, idCasting, idMediaType], (err, rows) => {
+    connection.query(query, [name], (err, rows) => {
         if(err) {
             res.send({msg: 'Ha ocurrido un error', err});
         }
@@ -55,17 +49,11 @@ router.post('/media', (req, res) => {
 
 /* UPDATE MEDIA */
 router.put('/media/:id', (req, res) => {
-    const query = 'UPDATE Media SET name = ?, idGenre = ?, idCompany = ?, idLanguage = ?, idCountry = ?, idCasting = ?, idMediaType = ? WHERE id = ?';
+    const query = 'UPDATE Media SET name = ? WHERE id = ?';
     const id = req.params.id;
     const name = req.body.name;
-    const idGenre = req.body.idGenre;
-    const idCompany = req.body.idCompany;
-    const idLanguage = req.body.idLanguage;
-    const idCountry = req.body.idCountry;
-    const idCasting = req.body.idCasting;
-    const idMediaType = req.body.idMediaType;
 
-    connection.query(query, [name, idGenre, idCompany, idLanguage, idCountry, idCasting, idMediaType, id], (err, rows) => {
+    connection.query(query, [name, id], (err, rows) => {
         if(err) {
             res.send({msg: 'Ha ocurrido un error', err});
         }
