@@ -1,11 +1,11 @@
-var http = require('http');
+const http = require('http');
 const express = require('express');
-const httpProxy = require('express-http-proxy');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
 const app = express();
+const connection = require('./dao/connection');
+
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -31,20 +31,34 @@ app.use(require('./routes/movieGenre'));
 
 app.post('/auth', (req, res) => {
   const authBody = req.body;
-
-  // CONSULTA EN BASE DE DATOS
-
-  // EXISTE
-  jwt.sign(authBody, 'supersecreta', {}, (err, token) => {
-    if (err) {
+  connection.query('SELECT * FROM User WHERE email = ?',[authBody.email], function(err,results){
+    if(err){
+      
       console.log(err);
       return res.send({msg: 'error', error: err})
+    
+    }else{
+      
+      if(results.length > 0){
+
+        if(authBody.password == results[0].password){
+          jwt.sign(authBody, 'supersecreta', {}, (err,token) => {
+
+            return res.send({token: token});
+    
+          });
+        }else{
+
+          res.send({msg: 'clave invalida', error: err})
+
+        }
+      }else{
+
+        res.send({msg: 'El correo no existe', error: err})
+        
+      }
     }
-
-    return res.send({token: token});
-  });
-
-  // NO EXISTE
+  })  
 })
 
 app.post('/waifus', (req, res) => {
@@ -60,5 +74,5 @@ app.post('/waifus', (req, res) => {
 })
 
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 server.listen(27100);

@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   token: string;
 
-  username: string;
+  email: string;
   password: string;
 
   constructor(private httpClient: HttpClient) { }
@@ -19,8 +19,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  authenticate(username: string, password: string) {
-    const userAuth = { username: username, password: password };
+  authenticate(email: string, password: string) {
+    const userAuth = { email: email, password: password };
 
     this.httpClient.post('http://localhost:27100/auth', userAuth).subscribe((response: any) => {
       this.token = response.token
