@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { MediasListComponent } from './components/medias-list/medias-list.component';
 
 const routes: Routes = [
   { path: '', 
@@ -10,8 +11,11 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path: 'medias-list',
+    component:MediasListComponent
   }
-  
 ];
 
 @NgModule({

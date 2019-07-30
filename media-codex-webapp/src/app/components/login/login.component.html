@@ -15,12 +15,12 @@
             <h5 class="card-title text-center">Sign In</h5>
             <form class="form-signin">
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="email">
+                <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
                 <label>Email address</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"> 
+                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"> 
                 <label>Password</label>
               </div>
 

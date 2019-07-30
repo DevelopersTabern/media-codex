@@ -30,8 +30,8 @@ app.use(require('./routes/movieGenre'));
 
 
 app.post('/auth', (req, res) => {
-  const userBody = req.body;
-  connection.query('SELECT * FROM User WHERE email = ?',[userBody.email], function(err,results){
+  const authBody = req.body;
+  connection.query('SELECT * FROM User WHERE email = ?',[authBody.email], function(err,results){
     if(err){
       
       console.log(err);
@@ -74,5 +74,6 @@ app.post('/waifus', (req, res) => {
 })
 
 
-const server = http.createServer(app);
+
+var server = http.createServer(app);
 server.listen(27100);
