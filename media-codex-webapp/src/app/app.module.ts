@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MediasListComponent } from './components/medias-list/medias-list.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MediasListComponent
+    MediasListComponent,
+    NavigationComponent
   ],
   imports: [
     AppRoutingModule,

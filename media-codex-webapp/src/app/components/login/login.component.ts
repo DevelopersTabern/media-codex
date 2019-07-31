@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
 
     this.httpClient.post('http://localhost:27100/auth', userBody).subscribe((response: any) => {
       this.token = response.token
-      localStorage.setItem()
-      this.router.navigate(['medias-list'])
+      this.router.navigate(['app/medias-list'])
     });
 
     

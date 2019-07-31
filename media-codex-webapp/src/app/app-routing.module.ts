@@ -13,7 +13,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path: 'medias-list',
+    path: 'app/medias-list',
     component:MediasListComponent
   }
 ];

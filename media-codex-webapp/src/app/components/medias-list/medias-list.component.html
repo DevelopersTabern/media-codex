@@ -1,5 +1,6 @@
-<p>
-  medias-list works!
-</p>
-
-<img src="assets/pictures/download.jpeg"> <h1>Hi oni sama</h1> <img src="assets/pictures/waifu.png">
+<div class="col-md-4" >
+  <ul class="list-group" >
+    <li class="list-group-item active">Active item</li>
+    <li class="list-group-item" *ngFor="let media of medias" >{{media.name}}</li>
+  </ul>
+</div>

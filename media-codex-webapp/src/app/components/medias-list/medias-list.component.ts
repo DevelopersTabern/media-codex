@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+
+import { MediasService } from '../../services/medias.service';
 
 @Component({
   selector: 'app-medias-list',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediasListComponent implements OnInit {
 
-  constructor() { }
+  @HostBinding('class') classes = 'row';
+
+  medias: any = [];
+
+  constructor(private mediaService: MediasService) { }
 
   ngOnInit() {
+    this.getMedias();
   }
 
+  getMedias() {
+    this.mediaService.getMedias()
+      .subscribe(
+        res => {
+          this.medias = res;
+        },
+        err => console.error(err)
+      );
+  }
 }
