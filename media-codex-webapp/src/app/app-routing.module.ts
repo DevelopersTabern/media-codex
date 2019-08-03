@@ -4,27 +4,30 @@ import { LoginComponent } from './components/login/login.component';
 import { MediasListComponent } from './components/medias-list/medias-list.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', 
+  {
+    path: '',
     redirectTo: '/welcome',
-    pathMatch: 'full' 
+    pathMatch: 'full'
   },
   {
-    path:'welcome',
-    component:WelcomeComponent
+    path: 'welcome',
+    component: WelcomeComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'app/medias-list',
-    component:MediasListComponent
+    component: MediasListComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   error: string;
   loading: boolean;
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this.loading = false;
   }
 
@@ -25,12 +26,10 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate(email: string, password: string) {
-    const userBody = { email: email, password: password };
     this.loading = true;
 
-    this.httpClient.post('http://localhost:27100/auth', userBody).subscribe((response: any) => {
-      if (response.token) {
-        this.token = response.token;
+    this.authService.login(email, password).subscribe((authenticated: boolean) => {
+      if (authenticated) {
         this.router.navigate(['app/medias-list']);
       }
       else {
