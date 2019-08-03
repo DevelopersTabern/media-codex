@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MediasListComponent } from './components/medias-list/medias-list.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MediasListComponent,
-    NavigationComponent
+    NavigationComponent,
+    WelcomeComponent,
+    RegisterComponent
   ],
   imports: [
     AppRoutingModule,

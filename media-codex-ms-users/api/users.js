@@ -33,12 +33,14 @@ router.get('/user/:id', (req, res) => {
 /* SAVE USER */
 router.post('/user', (req, res) => {
     const query = 'INSERT INTO User(userName, password, firstName, lastName, email, address) VALUES(?,?,?,?,?,?)';
+
     const userName = req.body.userName;
     const password = req.body.password;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
     const address = req.body.address;
+
     connection.query(query, [userName, password, firstName, lastName, email, address], (err, rows) => {
         if(err) {
             res.send({msg: 'Ha ocurrido un error', err});

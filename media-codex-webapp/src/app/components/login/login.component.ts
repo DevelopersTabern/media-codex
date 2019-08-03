@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
-  firstName: string;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -28,6 +27,5 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['app/medias-list'])
     });
 
-    
   }
 }
