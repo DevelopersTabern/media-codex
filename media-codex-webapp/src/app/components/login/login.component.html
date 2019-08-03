@@ -24,7 +24,8 @@
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
               <hr class="my-4">
-              <button (click)="authenticate(email, password)" class="btn btn-primary btn-lg btn-block">Sign in</button>
+              <button (click)="authenticate(email, password)" class="btn btn-primary btn-lg btn-block"
+                [disabled]="loading">Sign in</button>
             </form>
 
             <div id="alert-message" class="alert alert-warning" role="alert" *ngIf="error">

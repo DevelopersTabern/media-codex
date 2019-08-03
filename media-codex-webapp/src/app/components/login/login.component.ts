@@ -15,14 +15,18 @@ export class LoginComponent implements OnInit {
   password: string;
 
   error: string;
+  loading: boolean;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router) {
+    this.loading = false;
+  }
 
   ngOnInit() {
   }
 
   authenticate(email: string, password: string) {
     const userBody = { email: email, password: password };
+    this.loading = true;
 
     this.httpClient.post('http://localhost:27100/auth', userBody).subscribe((response: any) => {
       if (response.token) {
@@ -31,8 +35,11 @@ export class LoginComponent implements OnInit {
       }
       else {
         this.error = 'Usuario y/o contraseña invalidos';
+        this.loading = false;
       }
-    }, (err) => this.error = 'Error al comunicarse con el servidor');
-
+    }, (err) => {
+      this.error = 'Error al comunicarse con el servidor';
+      this.loading = false;
+    });
   }
 }
