@@ -32,4 +32,13 @@ export class AuthService {
       return this.status.authenticated;
     }));
   }
+
+  logout() {
+    this.status = {
+      authenticated: false,
+      token: null
+    };
+
+    localStorage.clear();
+  }
 }
