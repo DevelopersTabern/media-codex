@@ -8,12 +8,14 @@
             <hr class="my-4">
             <form class="form-signin">
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="email"
+                  [ngModelOptions]="{standalone: true}">
                 <label>Email address</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"> 
+                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                  [ngModelOptions]="{standalone: true}">
                 <label>Password</label>
               </div>
 
@@ -22,12 +24,15 @@
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
               <hr class="my-4">
-              <button (click)="authenticate(email, password)" class="btn btn-primary btn-lg btn-block" >Sign in</button>
+              <button (click)="authenticate(email, password)" class="btn btn-primary btn-lg btn-block">Sign in</button>
             </form>
+
+            <div id="alert-message" class="alert alert-warning" role="alert" *ngIf="error">
+              {{ error }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-  
