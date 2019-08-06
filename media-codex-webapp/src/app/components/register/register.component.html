@@ -8,36 +8,43 @@
             <hr class="my-4">
             <form class="form-signin">
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="User name" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" placeholder="User name" [(ngModel)]="userName" 
+                  [ngModelOptions]="{standalone: true}">
                 <label>User name</label>
               </div>
 
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="First name" [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}"> 
+                <input type="text" class="form-control" placeholder="First name" [(ngModel)]="firstName" 
+                  [ngModelOptions]="{standalone: true}"> 
                 <label>First name</label>
               </div>
 
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}"> 
+                <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="lastName" 
+                  [ngModelOptions]="{standalone: true}"> 
                 <label>Last name</label>
               </div>
 
               <div class="form-label-group">
-                <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"> 
+                <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="email" 
+                  [ngModelOptions]="{standalone: true}"> 
                 <label>Email address</label>
               </div>
 
               <div class="form-label-group">
-                <input type="text" class="form-control" placeholder="Address" [(ngModel)]="address" [ngModelOptions]="{standalone: true}"> 
+                <input type="text" class="form-control" placeholder="Address" [(ngModel)]="address" 
+                  [ngModelOptions]="{standalone: true}"> 
                 <label>Address</label>
               </div>
 
               <div class="form-label-group">
-                  <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"> 
+                  <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" 
+                    [ngModelOptions]="{standalone: true}"> 
                   <label>Password</label>
               </div>
               <hr class="my-4">
-              <button (click)="register(userName,firstName,lastName,email,address,password)" class="btn btn-primary btn-lg btn-block" >Sign up</button>
+              <button (click)="register(userName,firstName,lastName,email,address,password)" class="btn btn-primary btn-lg btn-block" 
+                [disabled]="loading">Sign up</button>
             </form>
           </div>
         </div>
