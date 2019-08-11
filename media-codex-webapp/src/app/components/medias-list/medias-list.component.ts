@@ -14,25 +14,25 @@ export class MediasListComponent implements OnInit {
   
   medias: any = [];
 
-  id:string;
-  
-  constructor(private mediaService: MediasService, private router: Router) { }
+
+  constructor(private mediasService: MediasService, private router: Router) { }
 
   ngOnInit() {
     this.getMedias();
   }
 
   getMedias() {
-    this.mediaService.getMedias().subscribe(res => {
+    this.mediasService.getMedias().subscribe(res => {
           this.medias = res;
+          console.log(res);
         },
         err => console.error(err)
       );
   }
 
-  verMedia(id:string){
-    this.mediaService.getMedia(id).subscribe(res => {
-        this.router.navigate(['/media',id] );
+  getMedia(id:string){
+    this.mediasService.getMedia(id).subscribe(res => {
+        this.router.navigate(['app/media',id] );
       },
       err => console.error(err)
     );
