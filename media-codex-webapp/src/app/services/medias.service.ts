@@ -13,4 +13,10 @@ export class MediasService {
   getMedias(){
     return this.http.get(`${this.API_URI}/media`)
   }
+
+  getMedia( id: string ){
+    return this.http.get(`${this.API_URI}/media/${id}`)
+  }
+
+
 }

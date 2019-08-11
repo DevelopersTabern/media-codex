@@ -1,6 +1,9 @@
-<div class="col-md-4 animated fadeIn fast">
-  <ul class="list-group" >
-    <li class="list-group-item active">Active item</li>
-    <li class="list-group-item" *ngFor="let media of medias" >{{media.name}}</li>
-  </ul>
+<div class="card-columns"> 
+  <div class="card bg-light mb-3" style="max-width: 18rem;"*ngFor="let media of medias" >
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ media.name }}</h5>
+        <p class="card-text">{{ media.id }}</p>
+        <button (click)="verMedia()" class="btn btn-primary">Ver</button>
+  </div>
 </div>

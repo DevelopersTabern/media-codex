@@ -10,6 +10,7 @@ import { MediasListComponent } from './components/medias-list/medias-list.compon
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MediaComponent } from './components/media/media.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from './components/register/register.component';
     MediasListComponent,
     NavigationComponent,
     WelcomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MediaComponent
   ],
   imports: [
     AppRoutingModule,

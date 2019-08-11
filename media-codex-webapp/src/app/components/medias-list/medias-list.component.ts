@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-
+import { Router } from "@angular/router";
 import { MediasService } from '../../services/medias.service';
 
 @Component({
@@ -11,9 +11,12 @@ export class MediasListComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
+  
   medias: any = [];
 
-  constructor(private mediaService: MediasService) { }
+  id:string;
+  
+  constructor(private mediaService: MediasService, private router: Router) { }
 
   ngOnInit() {
     this.getMedias();
@@ -25,5 +28,13 @@ export class MediasListComponent implements OnInit {
         },
         err => console.error(err)
       );
+  }
+
+  verMedia(id:string){
+    this.mediaService.getMedia(id).subscribe(res => {
+        this.router.navigate(['/media',id] );
+      },
+      err => console.error(err)
+    );
   }
 }
