@@ -20,9 +20,7 @@ export class MediasListComponent implements OnInit {
   }
 
   getMedias() {
-    this.mediaService.getMedias()
-      .subscribe(
-        res => {
+    this.mediaService.getMedias().subscribe(res => {
           this.medias = res;
         },
         err => console.error(err)

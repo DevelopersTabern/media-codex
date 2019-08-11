@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Router} from "@angular/router";
+import { Component, OnInit,  } from '@angular/core';
+import { User } from '../../models/User'
+
+import { UsersService } from '../../services/users.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -8,40 +10,38 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  title: 'app';
 
-  userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  password: string;
+  user: User = {
+    id:0,
+    userName: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    address: '',
+    password: ''
+  };
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  error: string;
+  loading: boolean;
 
+  constructor(private userService: UsersService, private router: Router) {
+    this.loading = false;
+  }
+  
   ngOnInit() {
   }
 
-  register(
-    userName: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    address: string,
-    password: string) {
+  register(){
+    this.loading = true;
+    this.userService.saveUser(this.user).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['app/medias-list']);
 
-    const userBody = { 
-      userName: userName,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      address: address,
-      password: password };
-
-    this.httpClient.post('http://localhost:27100/media', userBody).subscribe((response: any) => {
-      this.router.navigate(['app/medias-list'])
-      
-    });
-
+    },
+    err => console.log(err)
+    )
   }
+
+
+ 
 }

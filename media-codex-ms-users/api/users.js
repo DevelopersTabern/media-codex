@@ -32,6 +32,10 @@ router.get('/user/:id', (req, res) => {
 
 /* SAVE USER */
 router.post('/user', (req, res) => {
+    
+    
+
+/*
     const query = 'INSERT INTO User(userName, password, firstName, lastName, email, address) VALUES(?,?,?,?,?,?)';
 
     const userName = req.body.userName;
@@ -49,7 +53,7 @@ router.post('/user', (req, res) => {
             res.send('Usuario creado');
         }
     })
-});
+*/});
 
 /* UPDATE USER */
 router.put('/user/:id', (req, res) => {
