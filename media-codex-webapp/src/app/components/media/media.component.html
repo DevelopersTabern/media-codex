@@ -1,5 +1,22 @@
-<p>
-  {{ media.id }}
-</p>
+<div *ngFor="let media of media" >
+  <h1 class="animated fadeIn">{{ media.name }} <small>(aqui va una fecha)</small></h1>
+  <hr>
 
-yghhkkgkjgjkg
+  <div class="row animated fadeIn fast">
+
+    <div class="col-md-5">
+      <h4>Pais: <small>aqui va el pais</small></h4>
+      <h4>Lenguage: <small> aqui va el Lenguage</small></h4>
+      <h4>Genero: <small>aqui va el genero</small></h4>
+      <h4>Rating: <small>aqui va el Rating</small></h4>
+      <a [routerLink]="['/app/medias-list']" class="btn btn-outline-danger btn-block">Regresar</a>
+    </div>
+
+    <div class="col-md-7">
+      <h4>Elenco: <small>aqui va el elenco</small></h4>
+      <a href="">boton para valorar media</a>
+    </div>
+
+
+  </div>
+</div>

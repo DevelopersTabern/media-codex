@@ -17,11 +17,11 @@ export class MediasListComponent implements OnInit {
 
   constructor(private mediasService: MediasService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(){
     this.getMedias();
   }
 
-  getMedias() {
+  getMedias(){
     this.mediasService.getMedias().subscribe(res => {
           this.medias = res;
           console.log(res);
@@ -30,7 +30,7 @@ export class MediasListComponent implements OnInit {
       );
   }
 
-  getMedia(id:string){
+  getMedia(id:number){
     this.mediasService.getMedia(id).subscribe(res => {
         this.router.navigate(['app/media',id] );
       },

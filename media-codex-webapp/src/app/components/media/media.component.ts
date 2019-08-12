@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MediasService } from '../../services/medias.service';
-import { ConsoleReporter } from 'jasmine';
+
 
 @Component({
   selector: 'app-media',
@@ -11,23 +11,28 @@ import { ConsoleReporter } from 'jasmine';
 })
 export class MediaComponent implements OnInit {
 
-  media:any = [];
+  
+  media:any;
+ 
 
   constructor( private activatedRoute: ActivatedRoute, private mediasService: MediasService ) { 
-
+     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+     console.log(this.media);
   }
 
-  
 
-  ngOnInit() {
+  ngOnInit(){
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
       this.mediasService.getMedia(params.id).subscribe( res => {
-        console.log(res);
         this.media = res;
+        console.log(res);
       },
       err => console.log(err)
       )
     }
   }
+  
+
+  
 }
