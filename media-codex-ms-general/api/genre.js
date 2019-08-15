@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../dao/connection');
 
-/* GET ALL MOVIE GENRE */
-router.get('/movieGenre', (req, res) => {
-    const query = 'SELECT * FROM MovieGenre';
+/* GET ALL GENRE */
+router.get('/genre', (req, res) => {
+    const query = 'SELECT * FROM Genre';
     connection.query(query, (err, rows) => {
         if (err) {
             res.send({ msg: 'Ha ocurrido un error', err });
@@ -15,9 +15,9 @@ router.get('/movieGenre', (req, res) => {
     })
 });
 
-/* GET MOVIE GENRE BY ID */
-router.get('/movieGenre/:id', (req, res) => {
-    const query = 'SELECT * FROM MovieGenre WHERE id = ?';
+/* GET GENRE BY ID */
+router.get('/genre/:id', (req, res) => {
+    const query = 'SELECT * FROM Genre WHERE id = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -30,9 +30,9 @@ router.get('/movieGenre/:id', (req, res) => {
     })
 });
 
-/* SAVE MOVIE GENRE */
-router.post('/movieGenre', (req, res) => {
-    const query = 'INSERT INTO MovieGenre(id, name) VALUES(?, ?)';
+/* SAVE GENRE */
+router.post('/genre', (req, res) => {
+    const query = 'INSERT INTO Genre(id, name) VALUES(?, ?)';
     const id = req.body.id;
     const name = req.body.name;
 
@@ -41,14 +41,14 @@ router.post('/movieGenre', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Genero agregado');
+            res.send({ msg: 'Genero agregado'});
         }
     })
 });
 
-/* UPDATE MOVIE GENRE */
-router.put('/movieGenre/:id', (req, res) => {
-    const query = 'UPDATE MovieGenre SET name = ? WHERE id = ?';
+/* UPDATE GENRE */
+router.put('/genre/:id', (req, res) => {
+    const query = 'UPDATE Genre SET name = ? WHERE id = ?';
     const id = req.params.id;
     const name = req.body.name;
 
@@ -57,14 +57,14 @@ router.put('/movieGenre/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Genero actualizado');
+            res.send({ msg: 'Genero actualizado'});
         }
     })
 });
 
-/* DELETE MOVIE GENRE */
-router.delete('/movieGenre/:id', (req, res) => {
-    const query = 'DELETE FROM MovieGenre WHERE id = ?';
+/* DELETE GENRE */
+router.delete('/genre/:id', (req, res) => {
+    const query = 'DELETE FROM Genre WHERE id = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -72,7 +72,7 @@ router.delete('/movieGenre/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Genero eliminado');
+            res.send({ msg: 'Genero eliminado'});
         }
     })
 });
