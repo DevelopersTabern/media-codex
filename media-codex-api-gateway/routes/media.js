@@ -9,21 +9,37 @@ const mediaServiceProxy = httpProxy('ms-media:27002');
 router.get('/media', (req, res, next) => {
     mediaServiceProxy(req, res, next);
 })
-  
+
 router.get('/media/:id', (req, res, next) => {
     mediaServiceProxy(req, res, next);
 })
-  
+
 router.post('/media', (req, res, next) => {
     mediaServiceProxy(req, res, next);
 })
-  
+
 router.put('/media/:id', (req, res, next) => {
     mediaServiceProxy(req, res, next);
 })
-  
+
 router.delete('/media/:id', (req, res, next) => {
     mediaServiceProxy(req, res, next);
 })
-  
+
+router.get('/mediaGenre/:id', (req, res, next) => {
+    mediaServiceProxy(req, res, next);
+})
+
+router.get('/mediaCompany/:id', (req, res, next) => {
+    mediaServiceProxy(req, res, next);
+})
+
+router.get('/mediaLanguage/:id', (req, res, next) => {
+    mediaServiceProxy(req, res, next);
+})
+
+router.get('/mediaCountry/:id', (req, res, next) => {
+    mediaServiceProxy(req, res, next);
+})
+
 module.exports = router;
