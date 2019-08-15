@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS MediaCodex;
+CREATE DATABASE MediaCodex CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE MediaCodex;
+
 CREATE TABLE User(
 	id INT AUTO_INCREMENT,
 	userName VARCHAR(20) NOT NULL,
@@ -11,7 +15,7 @@ PRIMARY KEY(id));
 
 CREATE TABLE Companies(
 	id INT,
-	name VARCHAR(50) NOT NULL,
+	name VARCHAR(80) NOT NULL,
 PRIMARY KEY(id));
 
 
