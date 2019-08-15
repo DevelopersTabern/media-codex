@@ -71,7 +71,7 @@ router.put('/user/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Usuario editado');
+            res.send({ msg: 'Usuario editado'});
         }
     })
 });
@@ -86,7 +86,7 @@ router.delete('/user/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Usuario eliminado');
+            res.send({ msg: 'Usuario eliminado'});
         }
     })
 });
