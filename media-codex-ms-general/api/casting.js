@@ -42,7 +42,7 @@ router.post('/casting', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Personaje agregado');
+            res.send({ msg: 'Personaje agregado'});
         }
     })
 });
@@ -60,7 +60,7 @@ router.put('/casting/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Personaje actualizado');
+            res.send({ msg: 'Personaje actualizado'});
         }
     })
 });
@@ -75,7 +75,7 @@ router.delete('/casting/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Personaje eliminado');
+            res.send({ msg: 'Personaje eliminado'});
         }
     })
 });

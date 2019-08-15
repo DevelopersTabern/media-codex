@@ -40,7 +40,7 @@ router.post('/roles', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Rol agregado');
+            res.send({ msg: 'Rol agregado'});
         }
     })
 });
@@ -56,7 +56,7 @@ router.put('/roles/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Rol actualizado');
+            res.send({ msg: 'Rol actualizado'});
         }
     })
 });
@@ -71,7 +71,7 @@ router.delete('/roles/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Rol eliminado');
+            res.send({ msg: 'Rol eliminado'});
         }
     })
 });

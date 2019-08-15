@@ -17,7 +17,7 @@ router.get('/countries', (req, res) => {
 
 /* GET COUNTRIES BY ID */
 router.get('/countries/:id', (req, res) => {
-    const query = 'SELECT * FROM Countries WHERE id = ?';
+    const query = 'SELECT * FROM Countries WHERE iso_3166_1 = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -32,7 +32,7 @@ router.get('/countries/:id', (req, res) => {
 
 /* SAVE COUNTRIES */
 router.post('/countries', (req, res) => {
-    const query = 'INSERT INTO Countries(id, name) VALUES(?,?)';
+    const query = 'INSERT INTO Countries(iso_3166_1, name) VALUES(?,?)';
     const id = req.body.id;
     const name = req.body.name;
 
@@ -41,14 +41,14 @@ router.post('/countries', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Pais agregado');
+            res.send({ msg: 'Pais agregado'});
         }
     })
 });
 
 /* UPDATE COUNTRIES */
 router.put('/countries/:id', (req, res) => {
-    const query = 'UPDATE Countries SET name = ? WHERE id = ?';
+    const query = 'UPDATE Countries SET name = ? WHERE iso_3166_1 = ?';
     const id = req.params.id;
     const name = req.body.name;
 
@@ -57,14 +57,14 @@ router.put('/countries/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Pais actualizado');
+            res.send({ msg: 'Pais actualizado'});
         }
     })
 });
 
 /* DELETE COUNTRIES */
 router.delete('/countries/:id', (req, res) => {
-    const query = 'DELETE FROM Countries WHERE id = ?';
+    const query = 'DELETE FROM Countries WHERE iso_3166_1 = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -72,7 +72,7 @@ router.delete('/countries/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Pais eliminado');
+            res.send({ msg: 'Pais eliminado'});
         }
     })
 });

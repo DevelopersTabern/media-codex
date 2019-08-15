@@ -17,7 +17,7 @@ router.get('/languages', (req, res) => {
 
 /* GET LANGUAGES BY ID */
 router.get('/languages/:id', (req, res) => {
-    const query = 'SELECT * FROM Languages WHERE id = ?';
+    const query = 'SELECT * FROM Languages WHERE iso_639_1 = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -32,7 +32,7 @@ router.get('/languages/:id', (req, res) => {
 
 /* SAVE LANGUAGES */
 router.post('/languages', (req, res) => {
-    const query = 'INSERT INTO Languages(id, name) VALUES(?,?)';
+    const query = 'INSERT INTO Languages(iso_639_1, name) VALUES(?,?)';
     const id = req.body.id;
     const name = req.body.name;
 
@@ -41,14 +41,14 @@ router.post('/languages', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Lenguaje agregado');
+            res.send({ msg: 'Lenguaje agregado'});
         }
     })
 });
 
 /* UPDATE LANGUAGES */
 router.put('/languages/:id', (req, res) => {
-    const query = 'UPDATE Languages SET name = ? WHERE id = ?';
+    const query = 'UPDATE Languages SET name = ? WHERE iso_639_1 = ?';
     const id = req.params.id;
     const name = req.body.name;
 
@@ -57,14 +57,14 @@ router.put('/languages/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Lenguaje actualizado');
+            res.send({ msg: 'Lenguaje actualizado'});
         }
     })
 });
 
 /* DELETE LANGUAGES */
 router.delete('/languages/:id', (req, res) => {
-    const query = 'DELETE FROM Languages WHERE id = ?';
+    const query = 'DELETE FROM Languages WHERE iso_639_1 = ?';
     const id = req.params.id;
 
     connection.query(query, [id], (err, rows) => {
@@ -72,7 +72,7 @@ router.delete('/languages/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Lenguaje eliminado');
+            res.send({ msg: 'Lenguaje eliminado'});
         }
     })
 });

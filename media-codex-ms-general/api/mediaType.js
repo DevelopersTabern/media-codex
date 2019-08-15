@@ -40,7 +40,7 @@ router.post('/mediaType', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia creado');
+            res.send({ msg: 'Contenido multimedia creado'});
         }
     })
 });
@@ -56,7 +56,7 @@ router.put('/mediaType/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia actualizado');
+            res.send({ msg: 'Contenido multimedia actualizado'});
         }
     })
 });
@@ -71,7 +71,7 @@ router.delete('/mediaType/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia eliminado');
+            res.send({ msg: 'Contenido multimedia eliminado'});
         }
     })
 });

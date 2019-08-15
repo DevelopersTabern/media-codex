@@ -41,7 +41,7 @@ router.post('/companies', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Compañia creada');
+            res.send({ msg: 'Compañia creada'});
         }
     })
 });
@@ -57,7 +57,7 @@ router.put('/companies/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Compañia actualizada');
+            res.send({ msg: 'Compañia actualizada'});
         }
     })
 });
@@ -72,7 +72,7 @@ router.delete('/companies/:id', (req, res) => {
             res.send({ msg: 'Ha ocurrido un error', err });
         }
         else {
-            res.send('Compañia eliminada');
+            res.send({ msg: 'Compañia eliminada'});
         }
     })
 });

@@ -12,7 +12,7 @@ app.listen(port, () => console.log(`App listening on port ${port}!`));
 app.use(require('./api/companies'));
 app.use(require('./api/languages'));
 app.use(require('./api/countries'));
-app.use(require('./api/movieGenre'));
+app.use(require('./api/genre'));
 app.use(require('./api/roles'));
 app.use(require('./api/casting'));
 app.use(require('./api/mediaType'));
