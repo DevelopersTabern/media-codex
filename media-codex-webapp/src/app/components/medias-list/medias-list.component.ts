@@ -12,7 +12,7 @@ export class MediasListComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   
-  medias: any = [];
+  medias: any[] = [];
 
 
   constructor(private mediasService: MediasService, private router: Router) { }
@@ -22,7 +22,7 @@ export class MediasListComponent implements OnInit {
   }
 
   getMedias(){
-    this.mediasService.getMedias().subscribe(res => {
+    this.mediasService.getMedias().subscribe((res:any) => {
           this.medias = res;
           console.log(res);
         },

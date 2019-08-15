@@ -11,6 +11,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MediaComponent } from './components/media/media.component';
+import { CardMediaComponent } from './components/card-media/card-media.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MediaComponent } from './components/media/media.component';
     NavigationComponent,
     WelcomeComponent,
     RegisterComponent,
-    MediaComponent
+    MediaComponent,
+    CardMediaComponent
   ],
   imports: [
     AppRoutingModule,
