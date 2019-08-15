@@ -33,15 +33,16 @@ router.get('/media/:id', (req, res) => {
 
 /* SAVE MEDIA */
 router.post('/media', (req, res) => {
-    const query = 'INSERT INTO Media(name) VALUES(?)';
+    const query = 'INSERT INTO Media(id, name) VALUES(?,?)';
+    const id = req.body.id;
     const name = req.body.name;
 
-    connection.query(query, [name], (err, rows) => {
+    connection.query(query, [id, name], (err, rows) => {
         if(err) {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia creado');
+            res.send({ msg: 'Contenido multimedia creado'});
         }
     })
 });
@@ -58,7 +59,7 @@ router.put('/media/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia actualizado');
+            res.send({ msg: 'Contenido multimedia actualizado'});
         }
     })
 });
@@ -73,7 +74,7 @@ router.delete('/media/:id', (req, res) => {
             res.send({msg: 'Ha ocurrido un error', err});
         }
         else {
-            res.send('Contenido multimedia eliminado');
+            res.send({ msg: 'Contenido multimedia eliminado'});
         }
     })
 });
